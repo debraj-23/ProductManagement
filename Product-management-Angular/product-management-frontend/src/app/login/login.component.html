@@ -1,0 +1,55 @@
+<html>
+  <body>
+    <section class="vh-100" style="background-color: #50fc89;">
+      
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+    
+                <h3 class="mb-5">Log in</h3>
+                <!-- ------------ -->
+                
+                <form  #loginform="ngForm" id="btn" (ngSubmit)="loginUser()">
+           
+                  <small class="text-danger">{{msg}}</small> 
+                <!-- ------------ -->
+                <div class="form-outline mb-4">
+                  <input type="email" name="email" id="emailid" placeholder="Email" class="form-control form-control-lg" [(ngModel)]="user.email"
+              required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+               #email="ngModel"
+               [class.is-invalid]="email.invalid && email.touched"/>
+                <!----  <label class="form-label" for="typeEmailX-2">Email</label>-->
+                  <div *ngIf="email.errors && (email.invalid && email.touched)">
+    
+                <small class="text-danger" *ngIf="email.errors.required">EmailId is required Field</small>
+                <small class="text-danger"*ngIf="email.errors.pattern"> Enter valid Email Id</small>
+              </div>
+                </div>
+    
+                <div class="form-outline mb-4">
+                  <input type="password" placeholder="Password" id="pwd" class="form-control form-control-lg" name="password" required [(ngModel)]="user.password" #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched"/>
+                <!---- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                  <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password  is Required Field</small>
+                </div>
+    
+                
+                
+    
+                <button class="btn btn-primary btn-lg btn-block"  type="submit">Login</button>
+    
+                
+    
+               
+    
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    </body>
+    </html>
